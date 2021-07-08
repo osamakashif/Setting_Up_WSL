@@ -44,7 +44,7 @@ You may come across a message like:
 For information on key differences with WSL 2 please visit https://aka.ms/wsl2
 Please enable the Virtual Machine Platform Windows feature and ensure virtualization is enabled in the BIOS.`
 
-In this situation, you need to enable WSL 2 and Virtual Machine Platform Windows features and virtualization in BIOS (Intel Virtualization Technology or SVM Mode in AMD)..
+In this situation, you need to enable WSL 2 and Virtual Machine Platform Windows features and virtualization in BIOS (Intel Virtualization Technology or SVM Mode in AMD).
 
 #### Virtual Machine Platform
 To enable WSL 2, Open the Windows Features window by navigating to Control Panel | Programs | Turn Windows feature on or off.
