@@ -39,6 +39,7 @@ Open PowerShell and run this command to set WSL 2 as the default version when in
 #### Ensuring Virtualisation is enabled
 
 You may come across a message like:
+
 `Conversion in progress, this may take a few minutes...
 For information on key differences with WSL 2 please visit https://aka.ms/wsl2
 Please enable the Virtual Machine Platform Windows feature and ensure virtualization is enabled in the BIOS.`
