@@ -63,7 +63,7 @@ After the importing is done you can uninstall the Linux distribution you have fr
 3. Set default user of distribution installed via wsl --import
 Open PowerShell and run:
 `Get-ItemProperty Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\*\ DistributionName | Where-Object -Property DistributionName -eq <DistributionName> | Set-ItemProperty -Name DefaultUid -Value <Uid>`
-Where `<DistributionName>` is the name of the distribution you imported and `<Uid>` is the user id. You can check user id by running `wsl.exe` and then on it run `cat /etc/passwd | grep`.
+Where `<DistributionName>` is the name of the distribution you imported and `<Uid>` is the user id. You can check user id by running `wsl.exe` and then on it run `cat /etc/passwd | grep`, or if that gives no output, then `cat /etc/passwd` and read the uid.
 For instance, for an imported UbuntuCustom distribution, and having checked your user id is 1000, you can use
 `Get-ItemProperty Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\*\ DistributionName | Where-Object -Property DistributionName -eq UbuntuCustom | Set-ItemProperty -Name DefaultUid -Value 1000`
 
