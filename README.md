@@ -26,6 +26,7 @@ If you're not sure what kind of machine you have, open Command Prompt or PowerSh
 On non-English Windows versions, you might have to modify the search text, for example, in German it would be `systeminfo | find "Systemtyp"`.
 
 For x64 machines: https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+
 For ARM64 machines: https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_arm64.msi
 
 Run the update package downloaded in the previous step. (Double-click to run - you will be prompted for elevated permissions, select ‘yes’ to approve this installation.)
