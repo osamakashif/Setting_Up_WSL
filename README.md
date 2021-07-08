@@ -5,7 +5,9 @@ A repository showing how to setup WSL (mostly focused on WSL 2), set up a WSL di
 
 ### Step 1 - Enable the Windows Subsystem for Linux
 Open PowerShell as Administrator and run:
+
 `dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart`
+
 We recommend now moving on to step #2, updating to WSL 2, but if you wish to only install WSL 1, you can now restart your machine and move on to Step 6 - Install your Linux distribution of choice.
 
 ### Step 2 - Check requirements for running WSL 2
@@ -19,6 +21,7 @@ If you are running Windows 10 version 1903 or 1909, open "Settings" from your Wi
 ### Step 3 - Enable Virtual Machine feature
 Before installing WSL 2, you must enable the Virtual Machine Platform optional feature. Your machine will require virtualization capabilities to use this feature.
 Open PowerShell as Administrator and run:
+
 `dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart`
 
 ### Step 4 - Download the Linux kernel update package
@@ -35,6 +38,7 @@ Once the installation is complete, move on to the next step - setting WSL 2 as y
 
 ### Step 5 - Set WSL 2 as your default version
 Open PowerShell and run this command to set WSL 2 as the default version when installing a new Linux distribution:
+
 `wsl --set-default-version 2`
 
 #### Ensuring Virtualisation is enabled
@@ -78,22 +82,32 @@ This method enables the user to run in a way like before, however the Linux dist
 Moving using the WSL Command Line Tool (within a Windows Terminal):
 
 1. Export the distribution. Create a .tar file with the distribution to move using wsl.exe --export
+
 `wsl.exe --export <DistributionName> <Tar-FileName>`
+
 For instance, to export an Ubuntu distribution, you can use
+
 `C:\> wsl.exe --export Ubuntu c:\data\ubuntu.tar`
 
 2. Import the distribution into the target folder. Then, you can import the exported distribution into another folder
+
 `wsl.exe --import <DistributionName> <Folder-To-Install> <Tar-FileName>`
+
 For instance, to import the exported Ubuntu into a new UbuntuCustom distribution, you can use
+
 `C:\> wsl.exe --import UbuntuCustom d:\wsl\UbuntuCustom c:\data\ubuntu.tar`
+
 
 After the importing is done you can uninstall the Linux distribution you have from within the Apps page in Windows Settings.
 
 3. Set default user of distribution installed via wsl --import
 Open PowerShell and run:
+
 `Get-ItemProperty Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\*\ DistributionName | Where-Object -Property DistributionName -eq <DistributionName> | Set-ItemProperty -Name DefaultUid -Value <Uid>`
+
 Where `<DistributionName>` is the name of the distribution you imported and `<Uid>` is the user id. You can check user id by running `wsl.exe` and then on it run `cat /etc/passwd | grep`, or if that gives no output, then `cat /etc/passwd` and read the uid.
 For instance, for an imported UbuntuCustom distribution, and having checked your user id is 1000, you can use
+
 `Get-ItemProperty Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\*\ DistributionName | Where-Object -Property DistributionName -eq UbuntuCustom | Set-ItemProperty -Name DefaultUid -Value 1000`
 
 ### References:
