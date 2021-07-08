@@ -36,6 +36,33 @@ Once the installation is complete, move on to the next step - setting WSL 2 as y
 Open PowerShell and run this command to set WSL 2 as the default version when installing a new Linux distribution:
 `wsl --set-default-version 2`
 
+#### Ensuring Virtualisation is enabled
+
+You may come across a message like:
+`Conversion in progress, this may take a few minutes...
+For information on key differences with WSL 2 please visit https://aka.ms/wsl2
+Please enable the Virtual Machine Platform Windows feature and ensure virtualization is enabled in the BIOS.`
+
+In this situation, you need to enable WSL 2 and Virtual Machine Platform Windows features and virtualization in BIOS (Intel Virtualization Technology or SVM Mode in AMD)..
+
+#### Virtual Machine Platform
+To enable WSL 2, Open the Windows Features window by navigating to Control Panel | Programs | Turn Windows feature on or off.
+Ensure that the Virtual Machine Platform and Windows Subsystem for Linux features are selected.
+After clicking on the OK button, Windows will enable WSL 2.
+
+#### Enabling Hardware Virtualization
+
+Check if your system supports hardware virtualization, you can use 2 ways:
+1. Open your task manager.If your processor supports hardware virtualization, you will see virtualization as Enabled, or otherwise disabled. If it does not support virtualization, you will not see Hyper-V or virtualization mentioned in the task manager. 
+2. Open your command prompt. In your command prompt, type the command “systeminfo” and press Enter. If your processor supports Hardware Virtualization technology, you will be able to see a section of Hyper-V requirements along with the status. If virtualization is turned off, you will see “No” in front of the option “Virtualization Enabled in Firmware”. This means that your system does not support hardware virtualization. 
+
+If your system supports hardware virtualization, it’s time for you to reboot it and open its BIOS.
+Once you have entered the BIOS, you need to find the section for configuring your CPU. Depending upon your system, you will need to look for a menu called CPU configuration, processor, Northbridge or Chipset. You may arrive at this menu by going to “Advanced” or “Advanced Mode”.
+After finding the CPU configuration section, you need to find the menu or option where it allows you to enable hardware virtualization. Hardware virtualization is enabled in the acceleration section. Depending upon your PC, look for any of these or similar names such as Hyber-V, Vanderpool, SVM, AMD-V, Intel Virtualization Technology or VT-X.
+When you reach the hardware virtualization enabling menu, it might ask you to choose the enabling option from a checklist or a drop-down menu. In either case, select the “Enabled” option. If you see the options of AMD IOMMU or Intel VT-d, enable them as well.
+After selecting the enabling virtualization option, save the changes. Now you have successfully enabled hardware virtualization on your computer. 
+Once you have saved the settings of virtualization enablement, you have to exit the BIOS. The computer will now get restarted but with hardware virtualization enabled in it.
+
 ### Step 6 - Install your Linux distribution of choice
 Open the Microsoft Store and search your preferred Linux distribution. Select it. Press `Get` and then `Install`.
 
@@ -73,6 +100,8 @@ https://docs.microsoft.com/en-us/windows/release-health/release-information
 https://docs.microsoft.com/en-us/windows/wsl/install-win10
 https://stackoverflow.com/questions/38779801/move-wsl-bash-on-windows-root-filesystem-to-another-hard-drive
 https://github.com/microsoft/WSL/issues/3974
+https://www.configserverfirewall.com/windows-10/please-enable-the-virtual-machine-platform-windows-feature-and-ensure-virtualization-is-enabled-in-the-bios/
+https://www.virtualmetric.com/blog/how-to-enable-hardware-virtualization
 
 ### Versions applicable:
 
